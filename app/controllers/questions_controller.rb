@@ -11,6 +11,11 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    @question = Question.new(param_question)
+    if @question.save #saveの前に、validateが走り、エラーだと@questionに情報が入れられる
+    else
+      flash[:error] = @question.errors.full_messages
+    end
   end
 
   def show
@@ -20,5 +25,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def param_question
+    params.require(:question).permit(:title, :content)
   end
 end
