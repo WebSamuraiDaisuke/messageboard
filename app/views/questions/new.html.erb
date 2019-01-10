@@ -1,0 +1,7 @@
+<h1>Questions#new</h1>
+<p>Find me in app/views/questions/new.html.erb</p>
+<%= form_with model: @question, local: true do |f| %>
+  <%= f.text_field :title, placeholder: 'タイトル', required: true %>
+  <%= f.text_area :content, placeholder: '内容', required: true %>
+  <%= f.submit 'Post' %>
+<% end %>

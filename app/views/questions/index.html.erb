@@ -1,0 +1,19 @@
+<h1>Questions#index</h1>
+<p>Find me in app/views/questions/index.html.erb</p>
+  <table border="1">
+    <thead>
+      <th>id</th>
+      <th>title</th>
+      <th>content</th>
+    </thead>
+    <tbody>
+    <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.content %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+<%= link_to '>New Question', new_question_path%>
