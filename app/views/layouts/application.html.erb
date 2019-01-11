@@ -17,7 +17,9 @@
       <% end  %>
     </ul>
   <% end %>
-
+  <% if flash[:succeed].present? %>
+    <p>Success!</p>
+  <% end %>
     <%= yield %>
   </body>
 </html>
