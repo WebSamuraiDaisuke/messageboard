@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(param_question)
-    if @question.save #saveの前に、validateが走り、エラーだと@questionに情報が入れられる
+    if @question.save # saveの前に、validateが走り、エラーだと@questionに情報が入れられる
       redirect_to root_path, notice: 'Succeed'
     else
       flash[:error] = @question.errors.full_messages

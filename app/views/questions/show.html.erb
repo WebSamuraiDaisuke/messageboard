@@ -5,6 +5,22 @@
   <p><%= @question.content %></p>
 
 <hr>
+<h2>Reply</h2>
+<% @question.answers.any? %>
+<table border="1">
+  <thead>
+    <th>Name</th>
+    <th>Content</th>
+  </thead>
+  <tbody>
+  <% @question.answers.each do |answer| %>
+    <tr>
+      <td><%= answer.name %></td>
+      <td><%= answer.content %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 <%= form_with model: [@question, @answer],locale: true do |f| %>
   <%= f.hidden_field :question_id, {value: @question.id} %>
   <label>Name</label>
