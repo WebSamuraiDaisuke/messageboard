@@ -6,7 +6,7 @@
 
 <hr>
 <h2>Reply</h2>
-<% @question.answers.any? %>
+<% if @question.answers.any? %>
 <table border="1">
   <thead>
     <th>Name</th>
@@ -17,10 +17,16 @@
     <tr>
       <td><%= answer.name %></td>
       <td><%= answer.content %></td>
+      <td>
+        [<%= link_to 'Edit', edit_question_answer_path(@question, answer) %>]
+        [<%= link_to 'Delete', question_answer_path(@question, answer),
+      method: :delete, data:{ confirm: 'Are you sure?'}%>]
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
+<% end %>
 <%= form_with model: [@question, @answer],locale: true do |f| %>
   <%= f.hidden_field :question_id, {value: @question.id} %>
   <label>Name</label>
